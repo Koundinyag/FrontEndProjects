@@ -4,11 +4,12 @@ import Contactcard from './Contactcard'
 function Allcontacts() {
     return (
         <div>
-            <Contactcard name="Koundinya Gangadharuni" mobile="7036392933" isFav={true}/>
-            <Contactcard name="Ramalatha Gangadharuni" mobile="9393934177" isFav={false}/>
-            <Contactcard name="Sarma Gangadharuni" mobile="9490134177" isFav={true}/>
-            <Contactcard name="Sruthi Chintalapathi" mobile="8309960008" isFav={false}/>
-            <Contactcard name="Subrahmanyam Gangadharuni" mobile="9985672450" isFav={true}/>
+            <Contactcard name="Indian Railways" mobile="7554090600" isFav={true}/>
+            <Contactcard name="Indian Airways" mobile="18602331407" isFav={false}/>
+            <Contactcard name="Indian Navy" mobile="01121410525" isFav={true}/>
+            <Contactcard name="Indian Army" mobile="01121410525" isFav={false}/>
+            <Contactcard name="Police Force
+            " mobile="100" isFav={true}/>
 
 
         </div>
