@@ -1,8 +1,10 @@
 import React from 'react'
 import Avatar from '@mui/material/Avatar';
 import Rating from '@mui/material/Rating';
-import { toggle_fav } from '../actions';
+import { add_recent, toggle_fav } from '../actions';
 import { useDispatch } from 'react-redux';
+import PhoneIcon from '@mui/icons-material/Phone';
+import { IconButton } from '@mui/material';
 
 
 
@@ -74,11 +76,24 @@ function Contactcard(props) {
         value={props.isFav}
         max={1}
         onChange={(event, newValue) => {
-          // setValue(newValue);
+          // setValue(false);
           dispatch(toggle_fav(props.id))
         }}
          />
         </div>
+        <div>
+        <IconButton color="primary" aria-label="add an alarm"
+        onClick= {() => {
+          //Call Functionality
+          dispatch(add_recent(props.id))
+
+        }}
+        >
+              <PhoneIcon />
+        </IconButton>    
+        </div>
+    
+        
         </div>
     )
 }

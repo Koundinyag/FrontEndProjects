@@ -5,6 +5,8 @@ import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeAdress, changeDateOfBirth, changeEMailID, changeMobile, changeName, new_contact } from '../actions';
 
 const style = {
   position: 'absolute',
@@ -22,6 +24,9 @@ export default function NewContactModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+    const data = useSelector(state=> state.newContact)
+  const dispatch = useDispatch()
+
   return (
     <div>
     <SpeedDial
@@ -30,7 +35,7 @@ export default function NewContactModal() {
     sx={{ position: 'absolute', bottom: 16, right: 16 }}
     icon={<SpeedDialIcon />}
   >
-   </SpeedDial>      <Modal
+   </SpeedDial><Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -38,30 +43,37 @@ export default function NewContactModal() {
       >
         <Box sx={style}>
             <h1>New Contact</h1>
-            <TextField id="outlined-basic" label = "First Name" variant="outlined"/>
+            <TextField id="outlined-basic" label = "Name" variant="outlined" value={data.name}
+            onChange = {e => dispatch(changeName(e.target.value))}
+            />
+            <br/>
+            <br/>
+
+            <TextField id="outlined-basic" label = "Mobile Number" variant="outlined" value={data.mobile} onChange = {e => dispatch(changeMobile(e.target.value))}/>
             <br/>
             <br/>
 
 
-            <TextField id="outlined-basic" label = "Last Name" variant="outlined"/>
+            <TextField id="outlined-basic" label = "EMail ID" variant="outlined" value={data.email} onChange = {e => dispatch(changeEMailID(e.target.value))}/>
             <br/>
             <br/>
 
 
-            <TextField id="outlined-basic" label = "Mobile Number" variant="outlined"/>
+            <TextField id="outlined-basic" label = "Date of Birth " variant="outlined" value={data.dob} onChange = {e => dispatch(changeDateOfBirth(e.target.value))}/>
             <br/>
             <br/>
 
+            <TextField id="outlined-basic" label = "Address" variant="outlined" value={data.adress} onChange = {e => dispatch(changeAdress(e.target.value))}/>
+            <br/>
+            <br/>
+            <Button variant="contained" color="secondary"
+            onClick={() => {
+                dispatch(new_contact(data))
+                handleClose()
+            }}
 
-            <TextField id="outlined-basic" label = "Date Of Birth" variant="outlined"/>
-            <br/>
-            <br/>
 
-
-            <TextField id="outlined-basic" label = "Address" variant="outlined"/>
-            <br/>
-            <br/>
-            <Button variant="contained" color="secondary">Save Contact</Button>
+            >Save Contact</Button>
         </Box>
       </Modal>
     </div>
