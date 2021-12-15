@@ -1,17 +1,19 @@
+import {useSelector} from 'react-redux'
 import React from 'react'
 import Contactcard from './Contactcard'
+import NewContactModal from './NewContactModal'
 
 function Allcontacts() {
+    const contacts = useSelector(state => state.allContacts)
+    console.log(contacts)
     return (
         <div>
-            <Contactcard name="Indian Railways" mobile="7554090600" isFav={true}/>
-            <Contactcard name="Indian Airways" mobile="18602331407" isFav={false}/>
-            <Contactcard name="Indian Navy" mobile="01121410525" isFav={true}/>
-            <Contactcard name="Indian Army" mobile="01121410525" isFav={false}/>
-            <Contactcard name="Police Force
-            " mobile="100" isFav={true}/>
-
-
+        {
+            contacts.map(element => {
+                return (<Contactcard name ={element.name} mobile ={element.mobile} isFav={element.isFav} id={element.id}/>)
+            })
+        }
+        <NewContactModal/>
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import Avatar from '@mui/material/Avatar';
 import Rating from '@mui/material/Rating';
+import { toggle_fav } from '../actions';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -53,7 +55,9 @@ function stringToColor(string) {
 
 
 function Contactcard(props) {
-    return (
+  const dispatch = useDispatch()
+
+  return (
         <div style ={ styles.container}>
         <div>
         <Avatar {...stringAvatar(props.name)} />
@@ -71,6 +75,7 @@ function Contactcard(props) {
         max={1}
         onChange={(event, newValue) => {
           // setValue(newValue);
+          dispatch(toggle_fav(props.id))
         }}
          />
         </div>
