@@ -68,6 +68,7 @@ function Contactcard(props) {
         {props.name}
         <br/>
         <span style={styles.mobile}>+91 {props.mobile}</span>
+        {props.timestamp &&(<><br/><span style={styles.mobile}> {props.timestamp}</span></>)}
         </div>
         <div>
         <Rating
@@ -85,7 +86,12 @@ function Contactcard(props) {
         <IconButton color="primary" aria-label="add an alarm"
         onClick= {() => {
           //Call Functionality
-          dispatch(add_recent(props.id))
+          const today = new Date();
+          dispatch(add_recent({
+            id:props.id,
+            time: today.toLocaleString()
+
+          }))
 
         }}
         >
