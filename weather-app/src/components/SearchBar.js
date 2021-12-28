@@ -1,24 +1,21 @@
 import React from 'react';
+import {getCurrentWeather} from './../apis/open-weather-api'
 
 class SearchBar extends React.Component{
     constructor(props){
         super(props);
-        this.state={
-            location:''
-        };
-    }
+
+        };  
 
     onInputChange(e){
-        this.setState({
-            location:e.target.value
-        });
+        this.props.inputChange(e)
     }
 
     onFormSubmit(e){
         e.preventDefault();
     }
     render(){
-        const location = this.state.location
+        const location = this.props.location;
         return(
         <div>
         <form onSubmit={(e) => this.onFormSubmit(e)}>
