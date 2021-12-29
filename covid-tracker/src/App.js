@@ -6,12 +6,12 @@ import {MenuItem,
   CardContent,
   Card
 } from '@mui/material';
-import Map from "./Map";
 import InfoBox from './InforBox';
 import './App.css';
 import Table from "./Table"
-import {sortData} from './util'
-import LineGraph from './Linegraph';
+import {sortData} from './util'; 
+import "leaflet/dist/leaflet.css";
+import Map from "./Map"
 
 
 function App() {
@@ -19,7 +19,6 @@ const [countries, setCountries] = useState([]);
 const [country,setCountry] = useState('worldwide');
 const [countryInfo, setCountryInfo]  = useState({});
 const [tableData, setTableData] = useState([]);
-const [casesType,setCasesType] = useState("cases");
 
 useEffect(() => {
   fetch("https://disease.sh/v3/covid-19/all")
@@ -54,8 +53,8 @@ useEffect(() => {
 }, []);
 
 const onCountryChange = async(event) => {
-  const countryCode = event.target.value;
-  const url = countryCode === 'worldwide' ? `https://diesease.sh/v3/covid-19/all` : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+const countryCode = event.target.value;
+const url = countryCode === 'worldwide' ? `https://diesease.sh/v3/covid-19/all` : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
  await fetch(url)
   .then(response => response.json())
   .then((data) =>{
@@ -88,16 +87,15 @@ console.log("COUNTRY INFO >>>", countryInfo);
       <InfoBox title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered}/>
       <InfoBox title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths}/>  
     </div>
-    <Map/>
   {/*Table*/}
   {/*Map*/}
+  <Map/>
     </div>
     <Card className="app_right">
     <CardContent>
     <h3> Live Cases By Country</h3>
     <Table countries={tableData}/>
     <h3>Worldwide New Cases</h3>
-    // <LineGraph casesType={casesType}/>
     </CardContent>
     </Card>
     </div>   
