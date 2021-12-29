@@ -11,6 +11,7 @@ import InfoBox from './InforBox';
 import './App.css';
 import Table from "./Table"
 import {sortData} from './util'
+import LineGraph from './Linegraph';
 
 
 function App() {
@@ -18,6 +19,7 @@ const [countries, setCountries] = useState([]);
 const [country,setCountry] = useState('worldwide');
 const [countryInfo, setCountryInfo]  = useState({});
 const [tableData, setTableData] = useState([]);
+const [casesType,setCasesType] = useState("cases");
 
 useEffect(() => {
   fetch("https://disease.sh/v3/covid-19/all")
@@ -88,7 +90,6 @@ console.log("COUNTRY INFO >>>", countryInfo);
     </div>
     <Map/>
   {/*Table*/}
-  {/*Graph*/}
   {/*Map*/}
     </div>
     <Card className="app_right">
@@ -96,6 +97,7 @@ console.log("COUNTRY INFO >>>", countryInfo);
     <h3> Live Cases By Country</h3>
     <Table countries={tableData}/>
     <h3>Worldwide New Cases</h3>
+    // <LineGraph casesType={casesType}/>
     </CardContent>
     </Card>
     </div>   
