@@ -1,34 +1,41 @@
-import React from 'react';
-import {getCurrentWeather} from './../apis/open-weather-api'
+import React from "react";
 
-class SearchBar extends React.Component{
-    constructor(props){
-        super(props);
 
-        };  
+class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    onInputChange(e){
-        this.props.inputChange(e)
-    }
+  onInputchange(e){
+    this.props.inputChange(e);
+  }
 
-    onFormSubmit(e){
-        e.preventDefault();
-    }
-    render(){
-        const location = this.props.location;
-        return(
-        <div>
-        <form onSubmit={(e) => this.onFormSubmit(e)}>
-            <button type='submit'>
-                Search
-            </button>
-            <input id='search' name='search' value={location} onChange={e => this.onInputChange(e)}>
+  onFormSubmit(e){
+    e.preventDefault();
+    this.props.formSubmited();
+  }
 
-            </input>
+  render() {
+    const location = this.props.searchValue;
+
+    return (
+      <div className="search-bar">
+        <form className="search-form" onSubmit={this.handleSubmit}>
+          <button className="search-form__btn" type="submit">Search</button>
+          <input
+            className="search-form__input"
+            type="text"
+            id="searchBox"
+            name="searchBox"
+            value={location}
+            onChange={this.handleChange}
+          />
         </form>
-        </div>)
-    
-}
+      </div>
+    );
+  }
 }
 
-export default SearchBar
+export default SearchBar;

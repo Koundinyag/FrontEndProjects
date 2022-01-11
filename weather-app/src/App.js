@@ -2,7 +2,7 @@ import './App.scss';
 import SearchBar from './components/SearchBar';
 import CurrentWeather from './components/CurrentWeather';
 import { getCurrentWeather } from './apis/open-weather-api';
-import React from 'react'
+import React from 'react';
 
 class App extends React.Component {
 
@@ -34,7 +34,6 @@ onFormSubmit(){
             feelsLike: res.data.main.feelsLike,
             description: res.data.weather[0].main,
             icon: res.data.weather[0].icon
-
         })
     })
 }
