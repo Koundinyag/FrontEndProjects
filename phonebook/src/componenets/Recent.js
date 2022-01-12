@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import Contactcard from './Contactcard'
+import allContacts from './Allcontacts'
 
 function Recent() {
     const allContacts = useSelector(state => state.allContacts)

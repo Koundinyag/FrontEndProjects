@@ -95,10 +95,9 @@ function Contactcard(props) {
 
         }}
         >
-              <PhoneIcon />
+        <PhoneIcon />
         </IconButton>    
-        </div>
-    
+        </div>  
         
         </div>
     )

@@ -24,7 +24,7 @@ export default function NewContactModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-    const data = useSelector(state=> state.newContact)
+  const data = useSelector(state=> state.newContact)
   const dispatch = useDispatch()
 
   return (
@@ -43,7 +43,7 @@ export default function NewContactModal() {
       >
         <Box sx={style}>
             <h1>New Contact</h1>
-            <TextField id="outlined-basic" label = "Name" variant="outlined" value={data.name}
+            <TextField id="outlined-basic" label = "Name" variant="outlined" value={data.Name}
             onChange = {e => dispatch(changeName(e.target.value))}
             />
             <br/>
@@ -71,8 +71,6 @@ export default function NewContactModal() {
                 dispatch(new_contact(data))
                 handleClose()
             }}
-
-
             >Save Contact</Button>
         </Box>
       </Modal>

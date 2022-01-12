@@ -1,0 +1,10 @@
+/* // big-screen.styles.css */
+
+.big-screen {
+  width: 600px;
+  height: 100px;
+  margin: 0 auto;  
+}
+.big-screen p {
+  padding-top: 2%;
+}

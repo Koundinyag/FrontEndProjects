@@ -1,0 +1,10 @@
+ /* desktop.styles.css */
+
+.desktop {
+  width: 400px;
+  height: 100px;
+  margin: 0 auto;
+}
+.desktop p {
+  padding-top: 2%;
+}
