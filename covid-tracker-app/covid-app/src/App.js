@@ -89,7 +89,19 @@ function App() {
     <InfoBox isRed={false} active={casesType==='recovered'} onClick={e=>setCasesType('recovered')} title="Recovered Cases" total={prettyPrintSta(countryInfo.recovered)} cases={prettyPrintStat(countryInfo.todayRecovered)} />
     <InfoBox isRed={true} active={casesType==='deaths'} onClick={e=>setCasesType('deaths')} title="Death Cases" total={prettyPrintSta(countryInfo.deaths)} cases={prettyPrintStat(countryInfo.todayDeaths)} />
     </div>
-    
+    {/*Creation of Map*/}
+    <Map casesType={casesType} countries={mapCountries} center={mapCenter} zoom={mapZoom} />
+    {/* Creation of Card Content having Table and Graph*/}
+    <Card className="app-right">
+    <CardContent>
+    <h3>Live Content by Country</h3>
+    <Table countries={tableData}/>
+    <h3 className='app_graphTitle'> World Wide New {casesType}</h3>
+    <LineGraph className='app_graph' classType={casesType}/>
+    </CardContent>
+
+    </Card>
+
     </div>
     </div>
 
