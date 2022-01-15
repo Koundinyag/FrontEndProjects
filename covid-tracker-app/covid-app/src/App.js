@@ -84,6 +84,12 @@ function App() {
       </Select>
     </FormControl>
     </div>
+    <div className='app_status'>
+    <InfoBox isRed={true} active={casesType==='cases'} onClick={e=>setCasesType('cases')} title="Carona Cases" total={prettyPrintSta(countryInfo.cases)} cases={prettyPrintStat(countryInfo.todaycases)} />
+    <InfoBox isRed={false} active={casesType==='recovered'} onClick={e=>setCasesType('recovered')} title="Recovered Cases" total={prettyPrintSta(countryInfo.recovered)} cases={prettyPrintStat(countryInfo.todayRecovered)} />
+    <InfoBox isRed={true} active={casesType==='deaths'} onClick={e=>setCasesType('deaths')} title="Death Cases" total={prettyPrintSta(countryInfo.deaths)} cases={prettyPrintStat(countryInfo.todayDeaths)} />
+    </div>
+    
     </div>
     </div>
 
