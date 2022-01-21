@@ -30,8 +30,12 @@ function App() {
     query: "(min-device-width: 1201px )",
   });
   return (
-    <div className="App">
-    <img src={ManMatters} alt="Logo"/>
+    <div className="App" > 
+    <div style={{width:"400px", height:"400px", backgroundColor:"#D4EFDF", borderRadius:"30px", margin:"auto"}}>
+    <img src={ManMatters} style={{alignItems:"center",
+   width:"300px" ,height:"100px"}} alt="Logo"/>
+    </div>
+    <div style={{width:"200px", height:"200px" , color:"white", border:"2px solid black", margin:"auto", padding:"0px"}}></div>
     {isMobileDevice && <Mobile />}
     {isTabletDevice &&<TabletMobile />}
     {isDesktop && <Desktop />}
